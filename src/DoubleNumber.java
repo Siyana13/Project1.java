@@ -2,5 +2,10 @@ import java.util.ArrayList;
 
 public class DoubleNumber
 {
-    ArrayList<>
+   private ArrayList<Numbers> numbersArrayList;
+
+    public DoubleNumber() {
+        this.numbersArrayList = new ArrayList<>();
+    }
+
 }
