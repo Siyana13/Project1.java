@@ -1,23 +1,26 @@
 package bg.tu_varna.sit.fn21621513.formula;
 
-public class StringToNumber {
-    private String number;
+public class StringToNumber
+{
+    private Object data;
 
-    public String getNumber() {
-        return number;
+    public StringToNumber(Object data) {
+        this.data = data;
     }
 
-    public void convertIntoInt() {
-        int numberInt = Integer.parseInt(getNumber());
-        System.out.println("Конвертирано до int число:" + numberInt);
-    }
+    public Double dataTypesInFormula(){
+        if (data == null) return 0.0;
 
-    public void convertStringToDouble() {
-        try {
-            double numberDouble = Double.parseDouble(getNumber());
-            System.out.println("Конвертирано до double число:" + numberDouble);
-        } catch (NumberFormatException e) {
-            System.out.println("Невалидно число! Резултата е: 0");
+        else if (data instanceof String) {
+            if (((String) data).startsWith("\"") && ((String) data).endsWith("\""))
+                data = ((String) data).substring(1, ((String) data).length()-1);
+
+            if(((String) data).matches("[-+]?\\d*\\.?\\d+"))
+                return Double.parseDouble((String) data);
+            else return 0.0;
         }
+        if(data instanceof Integer)
+            return ((Integer) data).doubleValue();
+        return (Double) data;
     }
 }
